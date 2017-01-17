@@ -1,1 +1,1 @@
-# projet-jquery-history
+# jQuery Nuclear Throne Story Game
