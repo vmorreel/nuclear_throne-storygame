@@ -1,34 +1,54 @@
 $( function() {
     var buttons = $(".section button");
     var status = $("#status");
+    var story= "";
     status.hide();
     startGame();
+    
+    
+    
+    
 
     buttons.click( function() {
-        var go = $(this).attr('go');
-        if(go == "intro")
-        {
-            startGame();
+        go = $(this).attr('go');
+        var character = $(this).attr('character');
+        
+        switch(go) {
+            case 'intro':
+                startGame();
+                break;
+             case 'wakeUp':
+                setCharacter(character);
+                status.show();
+                gotoSection(go);
+                 break;
+            default:
+                gotoSection(go);
         }
-        else{
-            gotoSection(go);    
-        }
+        
     });
 
-
+    
+    function setCharacter(character){
+       story = character;
+    }
+    
+    
     function gotoSection(key) {
         $('.section').hide();
         var section = $('.section#'+key);
         section.show();
+        
         var child = section.children('action');
         var actionName = child.attr('name');
         var actionLose = child.attr('lose');
-
+        
+        
 
         if(actionName == "hit"){
             if(actionLose != undefined)
             {
-                setLife(actionLose);
+                losexLife(actionLose);
             }
             else
             {
@@ -36,57 +56,35 @@ $( function() {
             }
         }
 
-        
-
-        if(section.children('a').html() != undefined){
-
-            var button = section.children('button');
-            button.css({"display":"none"});
-            var chance = 0;
-
-            section.children('a').click(function(){
-                var reponse = $('input#question_'+key).val();
-                chance ++;
-
-                if(reponse == "reponse"){
-                    button.css({"display":"block"});
-                    $('a#lose').remove();
-                }
-                else
-                {
-                    if(chance == 1)
-                        $(this).after('<p><a id="lose">Faire apparaître le bouton en échange d\'une vie.</a></p>')
-                }
-
-
-                $('a#lose').click(function()
-                {
-                    button.css({"display":"block"});
-                    loseOneLife();
-                    $(this).remove();
-                });
-            });
-        }
-
     }
+    
+    function setSection(){
+        
+    }
+    
+    
 
+    /* LIFE */
     function getLife() {
         var life = status.find('span.value').html();
         return life;
 
     }
 
-    function setLife(v) {
+    function setLife(life) {
+        status.find('span.value').html(life);
+    }
+    
+    function losexLife(v) {
         var life = getLife();
         life = life-v;
-        status.find('span.value').html(life);
         if(life <= 0)
         {
-            status.find('span.value').html("0");
+            setLife(0);
             endGame();
         }
         else{
-            status.find('span.value').html(life);
+            setLife(life);
         }
     }
 
@@ -95,19 +93,22 @@ $( function() {
         life = life-1;
         if(life <= 0)
         {
-            status.find('span.value').html("0");
+            setLife(0);
             endGame();
         }
         else{
-            status.find('span.value').html(life);
+            setLife(life);
         }
 
     }
+    
+    
+    /*START/END GAME*/
 
     function startGame() {
         $('.section').hide();
         $('.section#intro').show();
-        status.find('span.value').html("3");
+        setLife(3);
     }
 
     function endGame() {
