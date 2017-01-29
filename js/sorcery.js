@@ -19,7 +19,7 @@ $( function() {
                 setCharacter(character);
                 status.show();
                 gotoSection(go);
-                 break;
+                break;
             default:
                 gotoSection(go);
 

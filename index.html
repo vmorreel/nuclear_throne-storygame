@@ -138,23 +138,92 @@
 		<br />
 		<i>"ᚠᚢᚦᚺᛈᚻᛗᛜᛝ"</i>
 
-		<button go="verifyVenuz">...</button>
-		<button go="soCool">...</button>
+		<button go="">...</button>
+		<button go="">...</button>
 	</div>
 
+	<!-- Ajouter les 2 derniers digits sur une partie de l'écran et la barre d'input en bas de l'écran pour le Easter Egg -->
 	<div class="section" id="fightBandits">
 		You're facing two desert bandits which are protecting the chest!
 
-		<button go="brrrrraaaap">...</button>
-		<button go="mony">...</button>
+		<button go="">...</button>
+		<button go="">...</button>
 	</div>
 
+	<!-- Ajouter 4 input de type number pour le digit pour ouvrir le coffre -->
 	<div class="section" id="openChest">
 		Here you are finally facing the chest so well defended, what do you want to do?
 
-		<button go=""></button>
+		<button go="" onclick=""></button>
 		<button go=""></button>
 	</div>
+	
+	<!-- ===========1st event results for Eyes========== -->
+	<div class="section" id="knowEverything">
+		Fortunately, you know this ancient language!
+		<button go="decodeInscription">Decode the strange inscription</button>
+	</div>
+
+	<div class="section" id="decodeInscription">
+		Wow, the engraving in the rock speaks of a secret code to open a chest. There seems to be 4 digits, but the last two are illegible.
+		<button go="showNothing">No time for this nonsense</button>
+		<button go="codeFirstPart">Note the first two digits of the combination</button>
+	</div>
+
+	<div class="section" id="codeFirstPart">
+		The first two digits are : 20.
+		<button go="fightBandits">Continue the trip in the desert</button>
+	</div>
+
+
+	<div class="section" id="showNothing">
+		Thanks to your telekinesis power, you feel that you are missing something important.
+		<button go="scorpionHurts">Return on your steps</button>
+		<button go="fightBandits">Do not trust your instincts</button>
+	</div>
+
+	<div class="section" id="scorpionHurts">
+		Ouch, a scorpion has stung you in the leg. You lose 4 health points.
+		<action lose="4"></action>
+		<button go="knowEverything">Approach the rock wall</button>
+		<button go="cantKillScorpion">Kill the scorpion which stung you.</button>
+	</div>
+
+	<div class="section" id="cantKillScorpion">
+		You killed the scorpion, but he pinched your arm. You lose 3 health points.
+		<action lose="3"></action>
+		<button go="decodeInscription">Go back to the strange engraving</button>
+	</div>
+
+
+	<!-- ===========2nd event results for Eyes========== -->
+	<div class="section" id="useTelekinesis">
+		You use your telekinesis power to counter bandits.
+		<button go="wontWorks">Huuumm,fsshh!</button>
+	</div>
+
+	<div class="section" id="wontWorks">
+		It doesn't seems to work. The bandits take advantage and attack you. You lose 3 health points.
+		<action lose="3"></action>
+		<button go="wontWorks">Try again</button>
+	</div>
+
+	<div class="section" id="eyesSeesEverything">
+		You haven't seen the poor serpent you walked on. He poisoned you.
+		<button go="poisoned">Die slowly</button>
+		<button go="poisoned">Die slowly</button>
+		<button go="poisoned">Die slowly</button>
+	</div>
+
+	<div class="section" id="poisoned">
+		You are poisonned. You lose 1 health point. The bandits don't even pay attention to you.
+		<i>I hope you noticed the last two digits of the code before you die.</i>
+		<action lose="1"></action>
+		<button go="poisoned">Die slowly</button>
+		<button go="poisoned">Die slowly</button>
+		<button go="poisoned">Die slowly</button>
+	</div>
+	 
 
 
 
@@ -186,29 +255,30 @@
 
 	<!-- ===========2nd event results for Y.V========== -->
 	<div class="section" id="brrrrraaaap">
-		Vous dégainez plus vite que votre ombre et vous tuez les deux bandits d'une unique balle.
-		<button go="stripCorpses">Dépouiller les cadavres des bandits, à la recherche de monyyyy</button>
-		<button go="openChest">S'approcher du coffre</button>
+		You shoot faster than your shadow and you kill the two bandits with a single bullet.
+		<button go="stripCorpses">Strip the corpses of bandits, looking for money for your bizniz</button>
+		<button go="openChest">Approach the chest</button>
 	</div>
 
 	<div class="section" id="stripCorpses">
-		Les bandits n'avaient que de petites coupures sur eux. Cet argent vous redonne le moral. Vous gagnez 1 point de vie.
+		The bandits had only small bills on them. That money restores your spirits. You gain 1 health point.
 		<action win="1"></action>
-		<button go="openChest">S'approcher du coffre</button>
+		<button go="openChest">Approach the chest</button>
 	</div>
 
 	<div class="section" id="mony">
-		Vous tentez de corrompre les bandits. Malheureusement, ils ne mangent pas de ce pain là. Ils vous assènent de lourds coups, vous perdez 3 points de vie.
+		You're trying to corrupt the bandits. Unfortunately, they don't see things the same way. They take you heavy blows, you lose 3 health points.
 		<action lose="3"></action>
-		<button go="noWay">Tenter de leur donner plus d'argent</button>
+		<button go="noWay">Attempt to give them more money</button>
 		<button go="brrrrraaaap">Thanks Gun God</button>
 	</div>
 
 	<div class="section" id="noWay">
-		L'argent ne les intéresse vraiment pas. Ils continuent de vous rouer de coups.
+		Money doesn't really interest them. They continue to beat you.
 		<action lose="3"></action>
 		<button go="brrrrraaaap">2 Yung 2 Die</button>
 	</div>
+
 
 	<!-- ===========3rd event results========= -->
 	<div class="section" id="chestOpened">
@@ -228,9 +298,9 @@
 	</div>
 
 
-
+	<!-- =========== Death ========= -->
 	<div class="section" id="death">
-		Vous êtes mort! C'est balot. Il va falloir réessayer!
+		You died, it's nerd. You'll have to retry!
 		<button go="intro">Fin</button>
 	</div>
 
