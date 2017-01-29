@@ -1,11 +1,22 @@
+@font-face {
+    font-family: pressStartCondensed;
+    src: url(../fonts/PrStart.ttf);
+}
+
+@font-face {
+    font-family: pressStart;
+    src: url(../fonts/prstartk.ttf);
+}
+
 html {
 	text-align: center;
 	cursor: url(http://img1.wikia.nocookie.net/__cb20140414065146/nuclear-throne/images/1/16/Pointer.gif) 16 16, none;
+	font-family: pressStart;
 }
 
 body {
 	font-size : 13pt;
-	font-family : "Trebuchet MS", Arial, sans-serif;
+	font-family: pressStart;
 }
 
 h2 {
@@ -49,9 +60,10 @@ h2 {
 	text-decoration : none;
 	padding : 5px;
 	margin-top : 30px;
-	background : lightGray;
+	background : none;
 	border : none;
 	cursor: url(http://img1.wikia.nocookie.net/__cb20140414065146/nuclear-throne/images/1/16/Pointer.gif) 16 16, none;
+	font-family: pressStart;
 }
 .section button+button  {
 	margin-top : 10px;
@@ -59,7 +71,7 @@ h2 {
 
 .section button:hover {
 	color : lightGray;
-	background-color : black;
+	background-color : none;
 }
 
 .battle {
