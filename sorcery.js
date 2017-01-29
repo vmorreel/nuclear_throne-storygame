@@ -33,6 +33,7 @@ $( function() {
                 //faire les set de section
                 break;
             case 'yv':
+                //set de section aussi
                  break;
             default:
                 break;
@@ -46,9 +47,13 @@ $( function() {
         section.show();
         
         var child = section.children('action');
-        var actionName = child.attr('name');
         var actionLose = child.attr('lose');
+        var actionWin = child.attr('win');
         
+        if(actionWin != undefined)
+        {
+            winXLife(actionWin);
+        }
 
         if(actionLose != undefined)
         {
@@ -76,6 +81,20 @@ $( function() {
         {
             setLife(0);
             endGame();
+        }
+        else{
+            setLife(life);
+        }
+    }
+
+    function winXLife(v) {
+        var life = getLife();
+        life = parseInt(life);
+        v = parseInt(v);
+        life = life+v;
+        if(life > 8)
+        {
+            setLife(8);
         }
         else{
             setLife(life);

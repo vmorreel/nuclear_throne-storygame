@@ -11,7 +11,7 @@
 <body>
 	<div id="status">
 		<div class="life">
-			Life : <span class="value">--</span>
+			Life: <span class="value">--</span>
 		</div>
 	</div>
 	
@@ -129,12 +129,8 @@
 	</div>
 
 
-	<!-- =================== -->
-
-	<!-- Les 3 gros évènements sont ici : 
-	Sauf qu'on doit gérer les différentes réponses en fonction du personnage choisi.
-
-	De plus, tout doit être traduit en anglais. --> 
+	<!-- =================== --> 
+	
 
 	<div class="section" id="strangeEngraving">
 		You notice a strange inscription in the rock:
@@ -142,106 +138,102 @@
 		<br />
 		<i>"ᚠᚢᚦᚺᛈᚻᛗᛜᛝ"</i>
 
-		<button go="">...</button>
-		<button go="">...</button>
+		<button go="verifyVenuz">...</button>
+		<button go="soCool">...</button>
 	</div>
 
 	<div class="section" id="fightBandits">
-		Vous faites face à deux bandits du désert !
+		You're facing two desert bandits which are protecting the chest!
 
-		<button go=""></button>
-		<button go=""></button>
+		<button go="brrrrraaaap">...</button>
+		<button go="mony">...</button>
 	</div>
 
 	<div class="section" id="openChest">
-		Vous vous trouvez enfin face au coffre si bien défendu, que faites-vous ?
+		Here you are finally facing the chest so well defended, what do you want to do?
 
+		<button go=""></button>
 		<button go=""></button>
 	</div>
 
-	<!-- ===================== -->
 
 
+	<!-- ===========1st event results for Y.V========== -->
+	<div class="section" id="verifyVenuz">
+		The sun and heat make you happy, you throw a bunch of bills in the air.
+		<button go="fightBandits">Continue your way</button>
+		<button go="getBackBills">Get back bills, don't mess around anyway</button>
+	</div>
 
-	<div class="section" id="wakeUp2">
-		Vous ouvez les yeux... Tout est noir autour de vous...
-		<action name="start"></action>
+	<div class="section" id="getBackBills">
+		Ouch by wanting to collect bills, you walked on a cactus. You lose 1 health point.
+		<action lose="1"></action>
+		<button go="fightBandits">Continue your way</button>
+	</div>
 
-		<button go="cavern">Se relever</button>
+	<div class="section" id="soCool">
+		You go your way, ignoring these insignificant inscriptions.
+		<button go="lostInTheDesert">Go back home for a nice glass of fresh lemonade and enjoy your magnificent palace</button>
+		<button go="fightBandits">Continue your journey in the desert</button>
+	</div>
+
+	<div class="section" id="lostInTheDesert">
+		You have not been able to find the opposite way in the desert. The heat completely dehydrated you.
+		<action lose="7"></action>
+		<button go="fightBandits">Continue to the chest</button>
 	</div>
 
 
-	<div class="section" id="cavern">
-		Vous êtes dans une caverne sombre. La seule issue semble être
-		une porte à quelques mètres de là.
+	<!-- ===========2nd event results for Y.V========== -->
+	<div class="section" id="brrrrraaaap">
+		Vous dégainez plus vite que votre ombre et vous tuez les deux bandits d'une unique balle.
+		<button go="stripCorpses">Dépouiller les cadavres des bandits, à la recherche de monyyyy</button>
+		<button go="openChest">S'approcher du coffre</button>
+	</div>
 
-		<button go="doorLocked">Sortir</button>
-		<button go="wait">Attendre</button>
-		<button go="examine">Examiner le sol</button>
+	<div class="section" id="stripCorpses">
+		Les bandits n'avaient que de petites coupures sur eux. Cet argent vous redonne le moral. Vous gagnez 1 point de vie.
+		<action win="1"></action>
+		<button go="openChest">S'approcher du coffre</button>
+	</div>
+
+	<div class="section" id="mony">
+		Vous tentez de corrompre les bandits. Malheureusement, ils ne mangent pas de ce pain là. Ils vous assènent de lourds coups, vous perdez 3 points de vie.
+		<action lose="3"></action>
+		<button go="noWay">Tenter de leur donner plus d'argent</button>
+		<button go="brrrrraaaap">Thanks Gun God</button>
+	</div>
+
+	<div class="section" id="noWay">
+		L'argent ne les intéresse vraiment pas. Ils continuent de vous rouer de coups.
+		<action lose="3"></action>
+		<button go="brrrrraaaap">2 Yung 2 Die</button>
+	</div>
+
+	<!-- ===========3rd event results========= -->
+	<div class="section" id="chestOpened">
+		The chest contained a golden weapon, it will be useful for your next adventures.
+		<button go="intro">The End</button>
+	</div>
+
+	<div class="section" id="letsSleep">
+		This journey tired you, you will make a nap before opening the chest
+		<button go="zzzzzz">ZZZzzZZzZzzzZZz</button>
+		<button go="zzzzzz">zzZzZZzZZZZzzZz</button>
+	</div>
+
+	<div class="section" id="zzzzzz">
+		When you woke up, the chest had disappeared! What a pity, you leave empty-handed.
+		<button go="intro">The End</button>
 	</div>
 
 
-	<div class="section" id="examine">
-		Rien de plus que des petits cailloux et de la poussière...
 
-		<button go="doorLocked">Sortir</button>
-		<button go="wait">Attendre</button>
+	<div class="section" id="death">
+		Vous êtes mort! C'est balot. Il va falloir réessayer!
+		<button go="intro">Fin</button>
 	</div>
 
+</body>
 
-	<div class="section" id="wait">
-		Vous attendez quelques minutes, mais rien ne se passe...
-		<button go="wait">Continuer à attendre</button>
-		<button go="hitWall">Se taper la tête contre le mur</button>
-		<button go="doorLocked">Sortir</button>
-		<button go="examine">Examiner le sol</button>
-	</div>
-
-
-	<div class="section" id="hitWall">
-		<p>Aie ! Vous perdez 1 point de vie...</p>
-		<p>Quelque chose tombe du plafond : une clé était cachée dans une
-			faille.</p><br>
-			<p>Mais pour l'ouvrir vous devez répondre à une question</p>
-			<p>... ?</p>
-			<input id="question_hitWall">
-			<a type="submit" style="cursor:pointer">Valider</a>
-			<action name="hit"></action>
-
-			<button go="exit">Utiliser la clé et ouvrir la porte</button>
-		</div>
-
-
-		<div class="section" id="doorLocked">
-			Malheureusement, une porte en bois bloque le passage. Elle a l'air vraiment solide&nbsp;:
-			peu probable que vous puissiez la défoncer.
-			<button go="hitDoor">Donner un grand coup d'épaule</button>
-			<button go="cavern">Retourner sur vos pas</button>
-		</div>
-
-
-		<div class="section" id="hitDoor">
-			BLAM ! La porte n'a pas bougé d'un poil. Par contre, votre épaule, elle, s'est enfoncée de quelques centimètres.
-			Vous perdez 1 point de vie.
-
-			<action name="hit" lose="2"></action>
-
-			<button go="hitDoor">Ré-essayer !</button>
-			<button go="cavern">Retourner sur vos pas</button>
-		</div>
-
-
-		<div class="section" id="exit">
-			Vous voyez la lumière du jour... Vous avez réussi à vous échapper !
-			<button go="intro">Fin</button>
-		</div>
-
-
-		<div class="section" id="death">
-			Vous êtes mort(e) ! C'est balot.
-			<button go="intro">Fin</button>
-		</div>
-
-	</body>
-
-	</html>
+</html>
