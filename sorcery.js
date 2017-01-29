@@ -1,10 +1,8 @@
 $( function() {
     var buttons = $(".section button");
     var status = $("#status");
-    var story= "";
     status.hide();
     startGame();
-    
     
     
     
@@ -17,20 +15,28 @@ $( function() {
             case 'intro':
                 startGame();
                 break;
-             case 'wakeUp':
+            case 'inTheDesert':
                 setCharacter(character);
                 status.show();
                 gotoSection(go);
                  break;
             default:
                 gotoSection(go);
-        }
-        
+
+        } 
     });
 
     
     function setCharacter(character){
-       story = character;
+       switch(character) {
+            case 'eyes':
+                //faire les set de section
+                break;
+            case 'yv':
+                 break;
+            default:
+                break;
+            }
     }
     
     
@@ -43,23 +49,11 @@ $( function() {
         var actionName = child.attr('name');
         var actionLose = child.attr('lose');
         
-        
 
-        if(actionName == "hit"){
-            if(actionLose != undefined)
-            {
-                losexLife(actionLose);
-            }
-            else
-            {
-                loseOneLife();
-            }
+        if(actionLose != undefined)
+        {
+            loseXLife(actionLose);
         }
-
-    }
-    
-    function setSection(){
-        
     }
     
     
@@ -75,7 +69,7 @@ $( function() {
         status.find('span.value').html(life);
     }
     
-    function losexLife(v) {
+    function loseXLife(v) {
         var life = getLife();
         life = life-v;
         if(life <= 0)
@@ -87,20 +81,6 @@ $( function() {
             setLife(life);
         }
     }
-
-    function loseOneLife() {
-        var life = getLife();
-        life = life-1;
-        if(life <= 0)
-        {
-            setLife(0);
-            endGame();
-        }
-        else{
-            setLife(life);
-        }
-
-    }
     
     
     /*START/END GAME*/
@@ -108,7 +88,7 @@ $( function() {
     function startGame() {
         $('.section').hide();
         $('.section#intro').show();
-        setLife(3);
+        setLife(8);
     }
 
     function endGame() {

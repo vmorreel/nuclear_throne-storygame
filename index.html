@@ -16,54 +16,120 @@
 	</div>
 	
 	<div class="section" id="intro">
-		<h2>A Nuclear Throne Story.</h2>
-		A game based on Nuclear Throne, a rogue like, developed and edited by Vlambeer.
-
-		
-		<button go="intro_2" >Commencer l'aventure !</button>
+		<h2>A Nuclear Throne Story</h2>
+		A game based on Nuclear Throne, a rogue like game, developed and edited by Vlambeer	
+		<button go="intro_2" >...</button>
 	</div>
 
 	<div class="section" id="intro_2">
+		Be attentive to indications. Indications everywhere
+		<button go="intro_3" >...</button>
+	</div>
+
+	<div class="section" id="intro_3">
+		Do you know Twitter?
+		<button go="intro_4" >...</button>
+	</div>
+
+	<div class="section" id="intro_4">
+		Several tries will be necessary to win the game
+		<button go="intro_5" >...</button>
+	</div>
+
+	<div class="section" id="intro_5">
+		<i>"Where is the secret code?"</i>
+		<button go="intro_6" >...</button>
+	</div>
+
+	<div class="section" id="intro_6">
+		<i>#verifiyvenuz_xxxx</i>
+		<button go="intro_7" >...</button>
+	</div>
+
+	<div class="section" id="intro_7">
+		Every character has a unique special capacity
+		<button go="intro_8" >...</button>
+	</div>
+
+	<div class="section" id="intro_8">
+		Made by Justine Vacher & Valentin Morreel
+		<button go="characters" >...</button>
+	</div>
+
+
+	<div class="section" id="characters">
 		<h2>Choose a character</h2>
-		Choix des bonhommes
+		<button go="nope" >Chicken</button>
+		<button go="nope" >Horror</button>
+		<button go="nope" >Crystal</button>
+		<button go="nope" >Melting</button>
 		<button go="yv_story_1" >Y.V</button>
+		<button go="nope" >Rogue</button>
+		<button go="nope" >Rebel</button>
 		<button go="eyes_story_1" >Eyes</button>
-		<button go="wakeUp" >Chicken</button>
-		<button go="wakeUp" >Horror</button>
-		<button go="wakeUp" >Crystal</button>
-		<button go="wakeUp" >Melting</button>
-		<button go="wakeUp" >Rogue</button>
-		<button go="wakeUp" >Rebel</button>
-		<button go="wakeUp" >Steroid</button>
-		<button go="wakeUp" >Robot</button>
-		<button go="wakeUp" >Plant</button>
-		<button go="wakeUp" >Fish</button>
+		<button go="nope" >Steroid</button>
+		<button go="nope" >Robot</button>
+		<button go="nope" >Plant</button>
+		<button go="nope" >Fish</button>
+	</div>
+
+
+	<div class="section" id="nope">
+		Nope, this character has no all mapped out future
+		<button go="characters" >...</button>
 	</div>
 	
-    <div class="section" id="yv_story_1">
-		Un blabla sur yv.
 
-		<button go="wakeUp" character="yv">Commencer le jeu</button>
-		<button go="intro_2">Retour</button>
+	<div class="section" id="yv_story_1">
+		You're swimming in your bill pool
+		<button go="yv_story_2">Carry on swimming</button>
+		<button go="yv_story_2_bis">Get out of the pool to enjoy your golden sofa</button>
 	</div>
+
+	<div class="section" id="yv_story_2">
+		You do not have time for it
+		<button go="yv_story_3">Get out of the bill pool</button>
+	</div>
+
+	<div class="section" id="yv_story_2_bis">
+		Uh! Your golden sofa hurts your ass
+		<button go="yv_story_3">Take a velvet cushion to relieve your buttocks</button>
+	</div>
+
+	<div class="section" id="yv_story_3">
+		A shiny object attracts your attention outside
+		<button go="yv_story_4">Go look out the window</button>
+	</div>
+
+	<div class="section" id="yv_story_4">
+		Wow, you see a huge chest far away in the desert!
+		<button go="inTheDesert" character="yv">Go on adventure to recover the contents of the chest !</button>
+	</div>
+
+
+
 	<div class="section" id="eyes_story_1">
 		Un blabla sur eyes.
+		<button go="wakeUp" character="eyes"></button>
+	</div>
 
-		<button go="wakeUp" character="eyes">Commencer le jeu</button>
-		<button go="intro_2">Retour</button>
+  
+
+
+	<div class="section" id="inTheDesert">
+		The sun is shining at the zenith.
+		<button go="inTheDesert_2">Walk in the terrible heat</button>
+		<button go="strangeEngraving">Walk in the shadow of rocky mountains</button>
+	</div>
+
+	<div class="section" id="inTheDesert_2">
+		The unsustainable desert heat weakens you.
+		<action lose="2"></action>
+		<button go="strangeEngraving">Walk in the shadow of rocky mountains</button>
 	</div>
 
 
 	<!-- =================== -->
-
-    <!-- Début des story -->
-    
-	<div class="section" id="wakeUp">
-		
-
-		<button go=""></button>
-	</div>
-    
 
 	<!-- Les 3 gros évènements sont ici : 
 	Sauf qu'on doit gérer les différentes réponses en fonction du personnage choisi.
@@ -71,14 +137,19 @@
 	De plus, tout doit être traduit en anglais. --> 
 
 	<div class="section" id="strangeEngraving">
-		Vous remarquez une étrange inscription dans la roche :
+		You notice a strange inscription in the rock:
+		<br />
+		<br />
+		<i>"ᚠᚢᚦᚺᛈᚻᛗᛜᛝ"</i>
 
-		<button go=""></button>
+		<button go="">...</button>
+		<button go="">...</button>
 	</div>
 
 	<div class="section" id="fightBandits">
 		Vous faites face à deux bandits du désert !
 
+		<button go=""></button>
 		<button go=""></button>
 	</div>
 
