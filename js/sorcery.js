@@ -62,6 +62,7 @@ $( function() {
             var character = $(this).attr('character');
             switch(go) {
                 case 'intro':
+                    resetInterface();
                     status.hide();
                     startGame();
                     break;
@@ -88,6 +89,11 @@ $( function() {
                             'top':'18px',
                             'left':'-217px'
                         });
+    }
+
+    function resetInterface(){
+        $('#status+img').remove();
+        $(".section").css('margin-top', '100px');
     }
 
     function shapeDesign() {
