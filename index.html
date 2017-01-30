@@ -63,10 +63,10 @@
 		<button go="nope" >Horror</button>
 		<button go="nope" >Crystal</button>
 		<button go="nope" >Melting</button>
-		<button go="yv_story_1" >Y.V</button>
+		<button go="beginning" character="yv">Y.V</button>
 		<button go="nope" >Rogue</button>
 		<button go="nope" >Rebel</button>
-		<button go="eyes_story_1" >Eyes</button>
+		<button go="beginning" character="eyes">Eyes</button>
 		<button go="nope" >Steroid</button>
 		<button go="nope" >Robot</button>
 		<button go="nope" >Plant</button>
@@ -77,6 +77,13 @@
 	<div class="section" id="nope">
 		Nope, this character has no all mapped out future
 		<button go="characters" >Go Back</button>
+	</div>
+
+
+
+	<div class="section" id="beginning">
+		Prepare you for the adventure. You'll have to be brave. And if you want to make a success of the impossible, don't forget that <i>Twitter</i> is your friend.
+		<button ></button>
 	</div>
 	
     <!--    Y.V begininng -->
@@ -103,44 +110,41 @@
 
 	<div class="section" id="yv_story_4">
 		Wow, you see a huge chest far away in the desert!
-		<button go="inTheDesert" character="yv">Go on adventure to recover the contents of the chest !</button>
+		<button go="inTheDesert">Go on adventure to recover the contents of the chest !</button>
 	</div>
 
     <!--    Eyes begininng -->
 
 	<div class="section" id="eyes_story_1">
-		Vous vous réveillez dans une grotte. Vous vous appercevais que le soleil illumine l'entrée de la grotte.
+		You wake up in a cave. You can see the sun lighting up the entrance of the cave.
 
-		<button go="eyes_story_2">Se réveiller</button>
-		<button go="eyes_story_2_bis">Attendre un peu</button>
+		<button go="eyes_story_2">Get up</button>
+		<button go="eyes_story_2_bis">Wait a bit</button>
 	</div>
 	
 	<div class="section" id="eyes_story_2_bis">
-		Des ennemis arrivent vers vous. Vous vous levez quand même.
-        Ils ne vous ont pas encore repérer.
-		<button go="eyes_story_3_bis">Se cacher et attendre qu'ils partent</button>
+		Bandits pass near you. You get up anyway. But they haven't spotted you yet.
+		<button go="eyes_story_3_bis">Hide and wait they leave</button>
 	</div>
 
     <div class="section" id="eyes_story_2">
-        Des ennemis passent devant votre grotte. 
-		<button go="eyes_story_3_bis">Se cacher et attendre qu'ils partent</button>
+        Desert bandots pass in front of the entrance of the cave where you were slumbering.
+		<button go="eyes_story_3_bis">Hide and wait they leave</button>
 
     </div>
 
 
     <div class="section" id="eyes_story_3_bis">
-		Vous êtes passé inaperçu. En partant les ennemis ont fait tombé quelque chose.
-		<button go="eyes_story_4">Le Ramasser</button>
+		The bandits didn't notice you. Leaving, they dropped something on the ground.
+		<button go="eyes_story_4">Pick up the fallen object</button>
 	</div>
    
     <div class="section" id="eyes_story_4">
-		C'est une carte qui emmène à un coffre. 
-
-		<button go="inTheDesert" character="eyes">Partir à l'aventure pour retrouver ce coffre</button>
+		The object in question is a map showing the location of a chest in the desert!
+		<button go="inTheDesert">Embark on a quest to get the content of the chest</button>
 	</div>
 
   
-
 
 	<div class="section" id="inTheDesert">
 		The sun is shining at the zenith.
@@ -180,8 +184,8 @@
 	<!-- Ajouter 4 input de type number pour le digit pour ouvrir le coffre -->
 	<div class="section" id="openChest">
 		Here you are finally facing the chest so well defended, what do you want to do?
-		<button ></button>
-		<button ></button>
+		<button go="chestOpened">Open the chest</button>
+		<button go="letsSleep">Take a break</button>
 	</div>
 	
 	<!-- ===========1st event results for Eyes========== -->

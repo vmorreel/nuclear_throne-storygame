@@ -13,61 +13,46 @@ $( function() {
     function setCharacter(character){
        switch(character) {
             case 'eyes':
-               var img =  $('div:first-of-type').append('coucou');
-               $(img).css({'position':'relative','top':'18px','left':'-218px'});
-    
+                setImage("Eyes_Sadist.gif");
+                //Beginning
+                setButton("#beginning>button", "eyes_story_1", "Let's move!");
+
                 //1st event
-                $("#strangeEngraving button:first-of-type").attr('go', 'knowEverything');
-                $("#strangeEngraving button:first-of-type").html('Know everything');
-                $("#strangeEngraving button:last-of-type").attr('go', 'showNothing');
-                $("#strangeEngraving button:last-of-type").html('Show nothing');
+                setButton("#strangeEngraving button:first-of-type", "knowEverything", "Know everything");
+                setButton("#strangeEngraving button:last-of-type", "showNothing", "Show nothing");
                 
                 //2nd event
-                $("#fightBandits button:first-of-type").attr('go', 'useTelekinesis');
-                $("#fightBandits button:first-of-type").html('Telekineses pushes projectiles away');
-                $("#fightBandits button:nth-of-type(2)").attr('go', 'eyesSeesEverything');
-                $("#fightBandits button:nth-of-type(2)").html('Eyes sees everything');
+                setButton("#fightBandits button:first-of-type", "useTelekinesis", "Telekineses pushes projectiles away");
+                setButton("#fightBandits button:nth-of-type(2)", "eyesSeesEverything", "Eyes sees everything");
 
                 $("#easter_egg").css("display", 'block');
                 $("#easter_egg").next().css("display", 'block');
 
 
-                //3rd event
-                $("#openChest button:first-of-type").attr('go', 'chestOpened');
-                $("#openChest button:first-of-type").html('Open the chest');
-                $("#openChest button:last-of-type").attr('go', 'letsSleep');
-                $("#openChest button:last-of-type").html('Take a break');
-
                 break;
 
             case 'yv':
+
+                setImage("Yung_Venuz_Menu.gif");
+
+                //Beginning
+                setButton("#beginning>button", "yv_story_1", "Let's move!");
+
                 //1st event
-                $("#strangeEngraving button:first-of-type").attr('go', 'verifyVenuz');
-                $("#strangeEngraving button:first-of-type").html('#verifyVenuz');
-                $("#strangeEngraving button:last-of-type").attr('go', 'soCool');
-                $("#strangeEngraving button:last-of-type").html('So cool');
+                setButton("#strangeEngraving button:first-of-type", "verifyVenuz", "#verifyVenuz");
+                setButton("#strangeEngraving button:last-of-type", "soCool", "So cool");
                 
                 //2nd event
-                $("#fightBandits button:first-of-type").attr('go', 'brrrrraaaap');
-                $("#fightBandits button:first-of-type").html('Brrrrraaaap');
-                $("#fightBandits button:nth-of-type(2)").attr('go', 'mony');
-                $("#fightBandits button:nth-of-type(2)").html('Mony');
-
+                setButton("#fightBandits button:first-of-type", "brrrrraaaap", "Brrrrraaaap");
+                setButton("#fightBandits button:nth-of-type(2)", "mony", "Mony");
+                
                 $("#easter_egg").css("display", 'none');
                 $("#easter_egg").next().css("display", 'none');
 
-
-                //3rd event
-                $("#openChest button:first-of-type").attr('go', 'chestOpened');
-                $("#openChest button:first-of-type").html('Open the chest');
-                $("#openChest button:last-of-type").attr('go', 'letsSleep');
-                $("#openChest button:last-of-type").html('Take a break');
                  break;
             default:
                 break;
             }
-        
-         buttons = $(".section button");
     }
     
     buttons.click( function() {
@@ -80,8 +65,12 @@ $( function() {
                     status.hide();
                     startGame();
                     break;
-                case 'inTheDesert':
+                case 'beginning':
                     setCharacter(character);
+                    shapeDesign();
+                    gotoSection(go);
+                    break;
+                case 'inTheDesert':
                     status.show();
                     gotoSection(go);
                     break;
@@ -93,9 +82,22 @@ $( function() {
 
     });
     
+    function setImage(path) {
+        $('#status').after('<img src="img/' + path + '">');
+               var img = $('#status+img').css({'position':'relative',
+                            'top':'18px',
+                            'left':'-217px'
+                        });
+    }
+
+    function shapeDesign() {
+        $(".section").css('margin-top', '0px');
+    }
+
     
     function setButton(id,go,message){
-        var button = $('#'+id).append('<button go="'+go+'">'+message);
+        $(id).attr('go', go);
+        $(id).html(message);
     }
     
     
@@ -161,7 +163,7 @@ $( function() {
     /*START/END GAME*/
     function startGame() {
         $('.section').hide();
-        $('.section#characters').show();
+        $('.section#intro').show();
         setLife(8);
     }
 
