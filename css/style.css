@@ -10,7 +10,7 @@
 
 html {
 	text-align: center;
-/*	cursor: url(http://img1.wikia.nocookie.net/__cb20140414065146/nuclear-throne/images/1/16/Pointer.gif) 16 16, none;*/
+	cursor: url(http://img1.wikia.nocookie.net/__cb20140414065146/nuclear-throne/images/1/16/Pointer.gif) 16 16, none;
 	font-family: pressStart;
 }
 
@@ -62,7 +62,7 @@ h2 {
 	margin-top : 30px;
 	background : black;
 	border : none;
-/*	cursor: url(http://img1.wikia.nocookie.net/__cb20140414065146/nuclear-throne/images/1/16/Pointer.gif) 16 16, none;*/
+	cursor: url(http://img1.wikia.nocookie.net/__cb20140414065146/nuclear-throne/images/1/16/Pointer.gif) 16 16, none;
 	font-family: pressStart;
 	color: lightGray;
 }

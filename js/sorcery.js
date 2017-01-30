@@ -3,23 +3,65 @@ $( function() {
     var status = $("#status");
     status.hide();
     startGame();
-    
 
+    $("#easter_egg").next().click(function() {
+        if ($("#easter_egg").val() == "#hewillnotdivideus") {
+            gotoSection("openChest");
+        }
+    });
+    
     function setCharacter(character){
        switch(character) {
             case 'eyes':
-               setSection('strangeEngraving','knowEverything','knowEverything');  
-               setSection('fightBandits','useTelekinesis','Use Telekinesis'); 
-               setSection('fightBandits','eyesSeesEverything','Eyes sees everything'); 
+               var img =  $('div:first-of-type').append('coucou');
+               $(img).css({'position':'relative','top':'18px','left':'-218px'});
+    
+                //1st event
+                $("#strangeEngraving button:first-of-type").attr('go', 'knowEverything');
+                $("#strangeEngraving button:first-of-type").html('Know everything');
+                $("#strangeEngraving button:last-of-type").attr('go', 'showNothing');
+                $("#strangeEngraving button:last-of-type").html('Show nothing');
                 
+                //2nd event
+                $("#fightBandits button:first-of-type").attr('go', 'useTelekinesis');
+                $("#fightBandits button:first-of-type").html('Telekineses pushes projectiles away');
+                $("#fightBandits button:nth-of-type(2)").attr('go', 'eyesSeesEverything');
+                $("#fightBandits button:nth-of-type(2)").html('Eyes sees everything');
+
+                $("#easter_egg").css("display", 'block');
+                $("#easter_egg").next().css("display", 'block');
+
+
+                //3rd event
+                $("#openChest button:first-of-type").attr('go', 'chestOpened');
+                $("#openChest button:first-of-type").html('Open the chest');
+                $("#openChest button:last-of-type").attr('go', 'letsSleep');
+                $("#openChest button:last-of-type").html('Take a break');
+
                 break;
+
             case 'yv':
-                setSection('strangeEngraving','verifyVenuz','verifyVenuz');  
-                setSection('strangeEngraving','soCool','soCool');  
-                setSection('fightBandits','brrrrraaaap','brrrrraaaap');  
-                setSection('fightBandits','mony','mony');  
-                setSection('openChest','chestOpened','Open the chest');  
-                setSection('openChest','letsSleep','Sleep zzzZZ');  
+                //1st event
+                $("#strangeEngraving button:first-of-type").attr('go', 'verifyVenuz');
+                $("#strangeEngraving button:first-of-type").html('#verifyVenuz');
+                $("#strangeEngraving button:last-of-type").attr('go', 'soCool');
+                $("#strangeEngraving button:last-of-type").html('So cool');
+                
+                //2nd event
+                $("#fightBandits button:first-of-type").attr('go', 'brrrrraaaap');
+                $("#fightBandits button:first-of-type").html('Brrrrraaaap');
+                $("#fightBandits button:nth-of-type(2)").attr('go', 'mony');
+                $("#fightBandits button:nth-of-type(2)").html('Mony');
+
+                $("#easter_egg").css("display", 'none');
+                $("#easter_egg").next().css("display", 'none');
+
+
+                //3rd event
+                $("#openChest button:first-of-type").attr('go', 'chestOpened');
+                $("#openChest button:first-of-type").html('Open the chest');
+                $("#openChest button:last-of-type").attr('go', 'letsSleep');
+                $("#openChest button:last-of-type").html('Take a break');
                  break;
             default:
                 break;
@@ -30,36 +72,30 @@ $( function() {
     
     buttons.click( function() {
         go = $(this).attr('go');
-        var character = $(this).attr('character');
-        switch(go) {
-            case 'intro':
-                status.hide();
-                deleteButtonCharacter();
-                startGame();
-                break;
-            case 'inTheDesert':
-                setCharacter(character);
-                status.show();
-                gotoSection(go);
-                break;
-            default:
-                gotoSection(go);
 
-        } 
+        if (go != undefined){
+            var character = $(this).attr('character');
+            switch(go) {
+                case 'intro':
+                    status.hide();
+                    startGame();
+                    break;
+                case 'inTheDesert':
+                    setCharacter(character);
+                    status.show();
+                    gotoSection(go);
+                    break;
+                default:
+                    gotoSection(go);
+                    break;
+            } 
+        }
+
     });
     
     
-    function setSection(id,go,message){
+    function setButton(id,go,message){
         var button = $('#'+id).append('<button go="'+go+'">'+message);
-    }
-    
-    function deleteButtonCharacter(){
-        var strangeEngraving =  $('#strangeEngraving').find('button');
-        var fightBandits =  $('#fightBandits').find('button');
-        var openChest =  $('#openChest').find('button');
-        $(strangeEngraving).remove(); 
-        $(fightBandits).remove(); 
-        $(openChest).remove(); 
     }
     
     
@@ -125,7 +161,7 @@ $( function() {
     /*START/END GAME*/
     function startGame() {
         $('.section').hide();
-        $('.section#intro').show();
+        $('.section#characters').show();
         setLife(8);
     }
 
