@@ -4,15 +4,37 @@ $( function() {
     status.hide();
     startGame();
     
-    
-    
 
+    function setCharacter(character){
+       switch(character) {
+            case 'eyes':
+               setSection('strangeEngraving','knowEverything','knowEverything');  
+               setSection('fightBandits','useTelekinesis','Use Telekinesis'); 
+               setSection('fightBandits','eyesSeesEverything','Eyes sees everything'); 
+                
+                break;
+            case 'yv':
+                setSection('strangeEngraving','verifyVenuz','verifyVenuz');  
+                setSection('strangeEngraving','soCool','soCool');  
+                setSection('fightBandits','brrrrraaaap','brrrrraaaap');  
+                setSection('fightBandits','mony','mony');  
+                setSection('openChest','chestOpened','Open the chest');  
+                setSection('openChest','letsSleep','Sleep zzzZZ');  
+                 break;
+            default:
+                break;
+            }
+        
+         buttons = $(".section button");
+    }
+    
     buttons.click( function() {
         go = $(this).attr('go');
         var character = $(this).attr('character');
-        
         switch(go) {
             case 'intro':
+                status.hide();
+                deleteButtonCharacter();
                 startGame();
                 break;
             case 'inTheDesert':
@@ -25,19 +47,19 @@ $( function() {
 
         } 
     });
-
     
-    function setCharacter(character){
-       switch(character) {
-            case 'eyes':
-                //faire les set de section
-                break;
-            case 'yv':
-                //set de section aussi
-                 break;
-            default:
-                break;
-            }
+    
+    function setSection(id,go,message){
+        var button = $('#'+id).append('<button go="'+go+'">'+message);
+    }
+    
+    function deleteButtonCharacter(){
+        var strangeEngraving =  $('#strangeEngraving').find('button');
+        var fightBandits =  $('#fightBandits').find('button');
+        var openChest =  $('#openChest').find('button');
+        $(strangeEngraving).remove(); 
+        $(fightBandits).remove(); 
+        $(openChest).remove(); 
     }
     
     
@@ -61,8 +83,6 @@ $( function() {
         }
     }
     
-    
-
     /* LIFE */
     function getLife() {
         var life = status.find('span.value').html();
@@ -103,7 +123,6 @@ $( function() {
     
     
     /*START/END GAME*/
-
     function startGame() {
         $('.section').hide();
         $('.section#intro').show();

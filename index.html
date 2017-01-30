@@ -76,10 +76,10 @@
 
 	<div class="section" id="nope">
 		Nope, this character has no all mapped out future
-		<button go="characters" >...</button>
+		<button go="characters" >Go Back</button>
 	</div>
 	
-
+    <!--    Y.V begininng -->
 	<div class="section" id="yv_story_1">
 		You're swimming in your bill pool
 		<button go="yv_story_2">Carry on swimming</button>
@@ -106,11 +106,37 @@
 		<button go="inTheDesert" character="yv">Go on adventure to recover the contents of the chest !</button>
 	</div>
 
-
+    <!--    Eyes begininng -->
 
 	<div class="section" id="eyes_story_1">
-		Un blabla sur eyes.
-		<button go="wakeUp" character="eyes"></button>
+		Vous vous réveillez dans une grotte. Vous vous appercevais que le soleil illumine l'entrée de la grotte.
+
+		<button go="eyes_story_2">Se réveiller</button>
+		<button go="eyes_story_2_bis">Attendre un peu</button>
+	</div>
+	
+	<div class="section" id="eyes_story_2_bis">
+		Des ennemis arrivent vers vous. Vous vous levez quand même.
+        Ils ne vous ont pas encore repérer.
+		<button go="eyes_story_3_bis">Se cacher et attendre qu'ils partent</button>
+	</div>
+
+    <div class="section" id="eyes_story_2">
+        Des ennemis passent devant votre grotte. 
+		<button go="eyes_story_3_bis">Se cacher et attendre qu'ils partent</button>
+
+    </div>
+
+
+    <div class="section" id="eyes_story_3_bis">
+		Vous êtes passé inaperçu. En partant les ennemis ont fait tombé quelque chose.
+		<button go="eyes_story_4">Le Ramasser</button>
+	</div>
+   
+    <div class="section" id="eyes_story_4">
+		C'est une carte qui emmène à un coffre. 
+
+		<button go="inTheDesert" character="eyes">Partir à l'aventure pour retrouver ce coffre</button>
 	</div>
 
   
@@ -137,25 +163,16 @@
 		<br />
 		<br />
 		<i>"ᚠᚢᚦᚺᛈᚻᛗᛜᛝ"</i>
-
-		<button go="">...</button>
-		<button go="">...</button>
 	</div>
 
 	<!-- Ajouter les 2 derniers digits sur une partie de l'écran et la barre d'input en bas de l'écran pour le Easter Egg -->
 	<div class="section" id="fightBandits">
 		You're facing two desert bandits which are protecting the chest!
-
-		<button go="">...</button>
-		<button go="">...</button>
 	</div>
 
 	<!-- Ajouter 4 input de type number pour le digit pour ouvrir le coffre -->
 	<div class="section" id="openChest">
 		Here you are finally facing the chest so well defended, what do you want to do?
-
-		<button go="" onclick=""></button>
-		<button go=""></button>
 	</div>
 	
 	<!-- ===========1st event results for Eyes========== -->
