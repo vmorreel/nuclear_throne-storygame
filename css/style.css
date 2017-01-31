@@ -43,6 +43,11 @@ button:focus {
 	outline-color: rgba(191,129,255,1);
 }
 
+#easter_egg {
+	opacity: 0.3;
+	background: black;
+}
+
 #soundButton {
 	position: absolute;
 	bottom: 0;
