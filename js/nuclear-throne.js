@@ -18,7 +18,7 @@ $( function() {
     function setCharacter(character){
        switch(character) {
             case 'eyes':
-                setImage("Eyes_Sadist.gif");
+                setImage("Eyes_Sadist.gif", "eyes", 27, -217, false);
                 //Beginning
                 setButton("#beginning>button", "eyes_story_1", "Let's move!");
 
@@ -38,7 +38,7 @@ $( function() {
 
             case 'yv':
 
-                setImage("Yung_Venuz_Menu.gif");
+                setImage("Yung_Venuz_Menu.gif", "yv", 25, -180, false);
 
                 //Beginning
                 setButton("#beginning>button", "yv_story_1", "Let's move!");
@@ -68,8 +68,13 @@ $( function() {
             switch(go) {
                 case 'intro':
                     resetInterface();
+                    shapeDesign();
                     status.hide();
                     startGame();
+                    break;
+                case 'intro_2':
+                    setInterface();
+                    gotoSection(go);
                     break;
                 case 'beginning':
                     setCharacter(character);
@@ -80,9 +85,22 @@ $( function() {
                     status.show();
                     gotoSection(go);
                     break;
+                    
                 case 'chestOpened':
                     verifCode();
                     break;
+
+                case 'fightBandits':
+                    gotoSection(go);
+                    setImage("Bandit_idle.gif", "bandit",19, 260, true);
+                    setImage("Bandit_idle.gif", "bandit", 19, 280, true);
+                    break;
+
+                case 'scorpionHurts':
+                    gotoSection(go);
+                    setImage("goldenScorpion.gif", "goldenScorpion", 14, 260, true);
+                    break;
+
                 default:
                     gotoSection(go);
                     break;
@@ -134,32 +152,68 @@ $( function() {
        
 
     }
-    
-    function setImage(path) {
-        $('#status').after('<img src="img/' + path + '">');
-        $('#status+img').css({'position':'relative',
-                            'top':'18px',
-                            'left':'-217px'
-                        });
+
+    function setImage(path, id, top, left, flipped) {
+        $('#status').after('<img src="img/' + path + '" id="' + id + '">');
+        var img = $('#status+img')
+
+        if (flipped == false) {
+            $(img).css({'position':'relative',
+                        'top':' ' + top + 'px',
+                        'left':' ' + left + 'px'
+                    });
+        } else {
+            $(img).css({
+                'position':'relative',
+                'top':' ' + top + 'px',
+                'left':' ' + left + 'px',
+                '-moz-transform': 'scaleX(-1)',
+                '-o-transform': 'scaleX(-1)',
+                '-webkit-transform': 'scaleX(-1)',
+                'transform': 'scaleX(-1)',
+                'filter': 'FlipH',
+                '-ms-filter': "FlipH"
+            });
+        }
+    }
+
+    function deleteImage(id) {
+        $(id).remove();
+    }
+
+    function setInterface(){
+        $(".section").css('margin-top', '100px');
+        $("#logo").remove();
     }
 
     function resetInterface(){
         $('#status+img').remove();
-        $(".section").css('margin-top', '100px');
+        $('#status').after('<img src="img/NuclearThrone.png" id="logo">');
     }
 
     function shapeDesign() {
         $(".section").css('margin-top', '0px');
     }
 
-    
     function setButton(id,go,message){
         $(id).attr('go', go);
         $(id).html(message);
     }
     
-    
+    function recursiveDeletion() {
+        while ($("#bandit").length != 0) {
+            deleteImage("#bandit");
+        }
+        while ($("#goldenScorpion").length != 0) 
+        {
+            deleteImage("#goldenScorpion");
+        }
+    }
+
+
     function gotoSection(key) {
+        recursiveDeletion();
+
         $('.section').hide();
         var section = $('.section#'+key);
         section.show();
