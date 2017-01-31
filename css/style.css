@@ -72,16 +72,19 @@ button:focus {
 
 
 #characters button {
+	font-size: 1em;
 	border-radius: 8px;
 	height: 150px;
     width: 150px;
     margin: auto;
     margin-top: 10px;
+    color: lightGray;
     margin-left: 10px;
     display: inline-block;
 }
 
 #characters button:hover {
+	color: white;
 	-moz-box-shadow: 0px 0px 50px 1px #ffffff;
 	-webkit-box-shadow: 0px 0px 50px 1px #ffffff;
 	-o-box-shadow: 0px 0px 50px 1px #ffffff;
@@ -219,11 +222,5 @@ input[type='number']{
 #characters>button:nth-of-type(12){
     background: url('../img/characters.png') 0 0;
     background-size: 303%;
-}
-
-
-/*lien si donne la langue au chat*/
-#lose{
-    cursor: pointer;
 }
 
