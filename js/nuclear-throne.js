@@ -321,7 +321,7 @@ $( function() {
     /*START/END GAME*/
     function startGame() {
         $('.section').hide();
-        $('.section#characters').show();
+        $('.section#intro').show();
         setLife(8);
     }
 
