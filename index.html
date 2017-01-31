@@ -178,15 +178,22 @@
 		<button ></button>
 
 		<input type='text' id='easter_egg' />
-		<button id="submitEasterEgg" >#verifyvenuz_xxxx</button>
+		<button >#verifyvenuz_xxxx</button>
 	</div>
 
 	<!-- Ajouter 4 input de type number pour le digit pour ouvrir le coffre -->
 	<div class="section" id="openChest">
 		Here you are finally facing the chest so well defended, what do you want to do?
-		<button go="chestOpened">Open the chest</button>
+		<button go="codeChest">Open the chest</button>
 		<button go="letsSleep">Take a break</button>
 	</div>
+	<div class="section" id="codeChest">
+           <input type="number" value="0" min="0" max="9">
+           <input type="number" value="0" min="0" max="9">
+           <input type="number" value="0" min="0" max="9">
+           <input type="number" value="0" min="0" max="9">
+           <button go="chestOpened">Try to open it</button>
+    </div>
 	
 	<!-- ===========1st event results for Eyes========== -->
 	<div class="section" id="knowEverything">

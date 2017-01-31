@@ -6,10 +6,15 @@ $( function() {
 
     $("#easter_egg").next().click(function() {
         if ($("#easter_egg").val() == "#hewillnotdivideus") {
+            $('img:first-of-type').remove();
+            $('img:first-of-type').remove();
             gotoSection("openChest");
+        }else{
+            $('#fightBandits p').remove();
+            $('#fightBandits').append('<p>Try Again !</p>');
         }
     });
-    
+
     function setCharacter(character){
        switch(character) {
             case 'eyes':
@@ -75,6 +80,9 @@ $( function() {
                     status.show();
                     gotoSection(go);
                     break;
+                case 'chestOpened':
+                    verifCode();
+                    break;
                 default:
                     gotoSection(go);
                     break;
@@ -83,9 +91,53 @@ $( function() {
 
     });
     
+    function verifCode(){
+        $('#codeChest p').remove();
+        var goodInput = 0;
+        var inputs =  $('#codeChest input');
+        
+        $.each(inputs, function(index,element){
+            
+            if(index == 0 && $(element).val() == 2){
+                $(element).attr('disabled','true');
+                goodInput ++;
+            }
+            
+            if(index == 1 && $(element).val() == 0){
+                  $(element).attr('disabled','true');
+                 goodInput ++;
+            }
+            
+            if(index == 2 && $(element).val() == 1){
+                  $(element).attr('disabled','true');
+                 goodInput ++;
+            }
+            if(index == 3 && $(element).val() == 1){
+                $(element).attr('disabled','true');
+                 goodInput ++;
+            }
+
+        });
+        
+         if(goodInput == 4){
+                $.each(inputs, function(index,element){
+                    $(element).removeAttr('disabled');
+                    $(element).val('6');
+                });
+                gotoSection(go);
+            }else{
+                $('#codeChest p').remove();
+                $('#codeChest').append('<p>Try Again !</p>');
+            }
+      
+        
+       
+
+    }
+    
     function setImage(path) {
         $('#status').after('<img src="img/' + path + '">');
-               var img = $('#status+img').css({'position':'relative',
+        $('#status+img').css({'position':'relative',
                             'top':'18px',
                             'left':'-217px'
                         });
@@ -174,6 +226,7 @@ $( function() {
     }
 
     function endGame() {
+        resetInterface();
         $('.section').hide();
         $('.section#death').show();        
     }
