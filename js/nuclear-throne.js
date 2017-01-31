@@ -1,8 +1,12 @@
 $( function() {
     var buttons = $(".section button");
     var status = $("#status");
+    var audioElement = $("#soundPlayer");
+    var audio = document.getElementById("soundPlayer");
     status.hide();
     startGame();
+    soundAction();
+  
 
     $("#easter_egg").next().click(function() {
         if ($("#easter_egg").val() == "#hewillnotdivideus") {
@@ -14,6 +18,39 @@ $( function() {
             $('#fightBandits').append('<p>Try Again !</p>');
         }
     });
+
+    function soundAction(){
+
+        playSound("musThemeB");
+
+        audio.volume = 0.6;
+
+        $("#soundButton").click(function(){
+            if ($(this).attr('data') == 1) {
+                $(this).attr('data', 0)
+                audio.volume = 0.6;
+                $("#soundButton img").attr("src", "img/soundActive.png");
+            } else {
+                $(this).attr('data', 1)
+                audio.volume = 0;
+                $("#soundButton img").attr("src", "img/soundPassive.png");
+            }
+        });
+
+        $("#characters button").click(function() {
+            if ($(this).html()=="Y.V") {
+                playSound("yvTheme");
+            }
+            if ($(this).html()=="Eyes") {
+                playSound("eyesTheme");
+            }
+        });
+    }
+
+    function playSound(path){
+        audioElement.attr('src', 'sounds/' + path + '.mp3');
+        audio.play();
+    }
 
     function setCharacter(character){
        switch(character) {
@@ -30,8 +67,10 @@ $( function() {
                 setButton("#fightBandits button:first-of-type", "useTelekinesis", "Telekineses pushes projectiles away");
                 setButton("#fightBandits button:nth-of-type(2)", "eyesSeesEverything", "Eyes sees everything");
 
+
                 $("#easter_egg").css("display", 'block');
                 $("#easter_egg").next().css("display", 'block');
+                $("#secret").css('display', 'block');
 
 
                 break;
@@ -69,6 +108,7 @@ $( function() {
                 case 'intro':
                     resetInterface();
                     shapeDesign();
+                    playSound("musThemeB");
                     status.hide();
                     startGame();
                     break;
@@ -92,6 +132,7 @@ $( function() {
 
                 case 'fightBandits':
                     gotoSection(go);
+
                     setImage("Bandit_idle.gif", "bandit",19, 260, true);
                     setImage("Bandit_idle.gif", "bandit", 19, 280, true);
                     break;
@@ -187,7 +228,12 @@ $( function() {
     }
 
     function resetInterface(){
-        $('#status+img').remove();
+         while ($("img").length != 0) {
+            $('img').remove();
+         }
+
+        $("#soundButton").append("<img src='img/soundActive.png'>");
+        $("#soundButton img").attr("src", "img/soundActive.png");
         $('#status').after('<img src="img/NuclearThrone.png" id="logo">');
     }
 

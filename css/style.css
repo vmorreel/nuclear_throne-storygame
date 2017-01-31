@@ -10,7 +10,7 @@
 
 html {
 	text-align: center;
-	cursor: url(http://img1.wikia.nocookie.net/__cb20140414065146/nuclear-throne/images/1/16/Pointer.gif) 16 16, none;
+	cursor: url(../img/Pointer.gif) 16 16, none;
 	font-family: pressStart;
 	color: white;
 	height: 100%;
@@ -41,6 +41,23 @@ button {
 
 button:focus {
 	outline-color: rgba(191,129,255,1);
+}
+
+#soundButton {
+	position: absolute;
+	bottom: 0;
+	left: 5px;
+}
+
+#secret {
+	display: none;
+	position: absolute;
+	bottom: 0;
+	right: 5px;
+}
+
+#soundButton img{
+	height: 50px;
 }
 
 #logo {
@@ -109,7 +126,7 @@ button {
 	margin-top : 30px;
 	background : black;
 	border : none;
-	cursor: url(http://img1.wikia.nocookie.net/__cb20140414065146/nuclear-throne/images/1/16/Pointer.gif) 16 16, none;
+	cursor: url(../img/Pointer.gif) 16 16, none;
 	font-family: pressStart;
 	color: lightGray;
 }
@@ -119,7 +136,7 @@ button {
 
 button:hover {
 	color : white;
-	background-color : black;
+	background-color : #1f1f1f;
 }
 
 .battle {
