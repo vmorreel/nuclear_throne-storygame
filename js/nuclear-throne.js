@@ -142,7 +142,6 @@ $( function() {
         $(".section").css('margin-top', '0px');
     }
 
-    
     function setButton(id,go,message){
         $(id).attr('go', go);
         $(id).html(message);
